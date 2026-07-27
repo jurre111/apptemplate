@@ -10,7 +10,7 @@ struct SettingsView: View {
 					List {
 						Section("Map UI") {
 							Toggle("Show Compass", isOn: $alwaysShowCompass)
-							Toggle("Show Pitch Toggle", isOn: $showPitchToggle)
+							Toggle("Show Pitch Toggle", isOn: $alwaysShowPitchToggle)
 						}
 					}
 				}

@@ -3,7 +3,7 @@ import MapKit
 
 struct ContentView: View {
     let fm = FileManager.default
-    @State private var showsheet = true
+    @State private var showSheet = true
     var body: some View {
         Map()
             .sheet(isPresented: $showSheet) {
@@ -13,7 +13,7 @@ struct ContentView: View {
                     }
                 }
                 .presentationDetents([.height(80), .medium, .large])
-                .presentationBackgroundInteraction(.enabled(upTrough: .medium))
+                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .interactiveDismissDisabled()
             }
     }

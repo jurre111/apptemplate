@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		59FC45779041F758D77E4981 /* MyApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59FC45779041F758D77E4981 /* App.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9BC2E3FFFBD4B2A2F662D720 /* app */ = {
+		9BC2E3FFFBD4B2A2F662D720 /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			explicitFileTypes = {
 			};
 			explicitFolders = (
 			);
-			path = app;
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,7 +26,7 @@
 		4102E3E068508DD683953C7D = {
 			isa = PBXGroup;
 			children = (
-				9BC2E3FFFBD4B2A2F662D720 /* app */,
+				9BC2E3FFFBD4B2A2F662D720 /* App */,
 				E9C3DB3EC6D7655028A9C0D3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -34,7 +34,7 @@
 		E9C3DB3EC6D7655028A9C0D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59FC45779041F758D77E4981 /* MyApp.app */,
+				59FC45779041F758D77E4981 /* App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -42,9 +42,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EC9439B32188EF1B1E0F0334 /* MyApp */ = {
+		EC9439B32188EF1B1E0F0334 /* App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B3B335AD1DB963CE7FA322E /* Build configuration list for PBXNativeTarget "MyApp" */;
+			buildConfigurationList = 1B3B335AD1DB963CE7FA322E /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
 				66FDD99AD85A288FB1A1AFB5 /* Sources */,
 				B2C8B15C3824AAFDA89FF712 /* Resources */,
@@ -54,13 +54,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9BC2E3FFFBD4B2A2F662D720 /* app */,
+				9BC2E3FFFBD4B2A2F662D720 /* App */,
 			);
-			name = MyApp;
+			name = App;
 			packageProductDependencies = (
 			);
-			productName = MyApp;
-			productReference = 59FC45779041F758D77E4981 /* MyApp.app */;
+			productName = App;
+			productReference = 59FC45779041F758D77E4981 /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -88,7 +88,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EC9439B32188EF1B1E0F0334 /* MyApp */,
+				EC9439B32188EF1B1E0F0334 /* App */,
 			);
 		};
 /* End PBXProject section */
@@ -278,7 +278,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1B3B335AD1DB963CE7FA322E /* Build configuration list for PBXNativeTarget "MyApp" */ = {
+		1B3B335AD1DB963CE7FA322E /* Build configuration list for PBXNativeTarget "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F517E2FFB75BB79E3552D741 /* Debug */,

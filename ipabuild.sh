@@ -4,7 +4,7 @@ set -e
 
 cd "$(dirname "$0")"
 
-APPLICATION_NAME=homy
+APPLICATION_NAME=app
 
 echo "[*] $APPLICATION_NAME Build Script"
 

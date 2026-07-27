@@ -1,7 +1,6 @@
 name: Nightly Build & Release
 
 on:
-  push:
   workflow_dispatch:
 
 permissions:
@@ -27,26 +26,8 @@ jobs:
 
       - name: build app
         run: |
-          mkdir -p build
-          
-          xcodebuild -project App.xcodeproj \
-            -scheme App \
-            -configuration Release \
-            -derivedDataPath build/DerivedDataApp \
-            -destination 'generic/platform=iOS' \
-            clean build \
-            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
-            
-          cp -r build/DerivedDataApp/Build/Products/Release-iphoneos/App.app build/App.app
-
-          codesign --remove build/App.app || true
-          rm -rf build/App.app/_CodeSignature build/App.app/embedded.mobileprovision
-
-          cd build
-          mkdir Payload
-          cp -r App.app Payload/App.app
-          zip -vr App.ipa Payload
-          rm -rf Payload
+          chmod +x ipabuild.sh
+          ./ipabuild.sh
 
       - name: upload artifact
         uses: actions/upload-artifact@v4

@@ -24,6 +24,8 @@ jobs:
 
       - name: install ldid
         run: brew install ldid
+      - name: install xcpretty
+        run: gem install xcpretty
 
       - name: build app
         run: |

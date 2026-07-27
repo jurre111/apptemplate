@@ -3,18 +3,24 @@ import MapKit
 
 struct ContentView: View {
     let fm = FileManager.default
-    @State private var showSheet = true
+    @AppStorage("alwaysShowCompass") private var alwaysShowCompass: Bool = false
+    @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
+    @State private var showSheet: Bool = true
     var body: some View {
         Map()
-            .sheet(isPresented: $showSheet) {
-                List {
-                    Section("Test") {
-                        Text("Test")
-                        Text("Testing")
-                    }
+            .mapControls {
+                if alwaysShowCompass {
+                    MapCompass()
+                        .mapControls(.visible)
                 }
+                if showPitchToggle {
+                    MapPitchToggle()
+                }
+            }
+            .sheet(isPresented: $showSheet) {
+                SettingsView()
                 .presentationBackground(.ultraThinMaterial)
-                .presentationDetents([.height(75), .medium, .large])
+                .presentationDetents([.height(70), .medium, .large])
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .interactiveDismissDisabled()
             }

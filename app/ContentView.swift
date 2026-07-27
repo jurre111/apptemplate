@@ -15,7 +15,7 @@ struct ContentView: View {
                 .presentationDetents([.height(80), .medium, .large])
                 .presentationBackgroundInteraction(.enabled(upTrough: .medium))
                 .interactiveDismissDisabled()
-                
+            }
     }
 }
 

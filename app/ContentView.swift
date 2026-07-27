@@ -12,7 +12,8 @@ struct ContentView: View {
                         Text("Test")
                     }
                 }
-                .presentationDetents([.height(80), .medium, .large])
+                .presentationBackground(.ultraThinMaterial)
+                .presentationDetents([.height(75), .medium, .large])
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .interactiveDismissDisabled()
             }

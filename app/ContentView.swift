@@ -4,7 +4,7 @@ import MapKit
 struct ContentView: View {
     let fm = FileManager.default
     @AppStorage("alwaysShowCompass") private var alwaysShowCompass: Bool = false
-    @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
+    @AppStorage("alwaysShowPitchToggle") private var alwaysShowPitchToggle: Bool = false
     @State private var showSheet: Bool = true
     var body: some View {
         Map()
@@ -13,8 +13,9 @@ struct ContentView: View {
                     MapCompass()
                         .mapControlVisibility(.visible)
                 }
-                if showPitchToggle {
+                if alwaysShowPitchToggle {
                     MapPitchToggle()
+                        .mapControlVisibility(.visible)
                 }
             }
             .sheet(isPresented: $showSheet) {

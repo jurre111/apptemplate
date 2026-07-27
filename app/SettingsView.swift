@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
 	@AppStorage("alwaysShowCompass") private var alwaysShowCompass: Bool = false
-    @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
+    @AppStorage("alwaysShowPitchToggle") private var alwaysShowPitchToggle: Bool = false
 	var body: some View {
 		NavigationStack {
 			List {

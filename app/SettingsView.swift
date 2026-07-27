@@ -6,11 +6,11 @@ struct SettingsView: View {
 	var body: some View {
 		NavigationStack {
 			List {
-				NavigationStack("User Interface") {
+				NavigationLink("User Interface") {
 					List {
 						Section("Map UI") {
-							Toggle("Show Compass", onChange: $alwaysShowCompass)
-							Toggle("Show Pitch Toggle", onChange: $showPitchToggle)
+							Toggle("Show Compass", isOm: $alwaysShowCompass)
+							Toggle("Show Pitch Toggle", isOn: $showPitchToggle)
 						}
 					}
 				}

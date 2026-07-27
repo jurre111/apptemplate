@@ -11,7 +11,7 @@ struct ContentView: View {
             .mapControls {
                 if alwaysShowCompass {
                     MapCompass()
-                        .mapControls(.visible)
+                        .mapControlVisibilty(.visible)
                 }
                 if showPitchToggle {
                     MapPitchToggle()

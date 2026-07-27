@@ -10,7 +10,7 @@ struct ContentView: View {
                 List {
                     Section("Test") {
                         Text("Test")
-                        Text("Test 2")
+                        Text("Testing")
                     }
                 }
                 .presentationBackground(.ultraThinMaterial)

@@ -13,6 +13,7 @@ targets:
     
     sources:
       - path: app
+        type: syncedFolder
     
     settings:
       base:

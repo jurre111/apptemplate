@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		59FC45779041F758D77E4981 /* App.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49D88A349FD70A9153DD2C03 /* App.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9BC2E3FFFBD4B2A2F662D720 /* App */ = {
+		72A1F8D260D2B0F94CE920B5 /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			explicitFileTypes = {
 			};
@@ -26,7 +26,7 @@
 		4102E3E068508DD683953C7D = {
 			isa = PBXGroup;
 			children = (
-				9BC2E3FFFBD4B2A2F662D720 /* App */,
+				72A1F8D260D2B0F94CE920B5 /* App */,
 				E9C3DB3EC6D7655028A9C0D3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -34,7 +34,7 @@
 		E9C3DB3EC6D7655028A9C0D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59FC45779041F758D77E4981 /* App.app */,
+				49D88A349FD70A9153DD2C03 /* App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -42,25 +42,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EC9439B32188EF1B1E0F0334 /* App */ = {
+		93E9E330FC2CE7458D9C925F /* App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B3B335AD1DB963CE7FA322E /* Build configuration list for PBXNativeTarget "App" */;
+			buildConfigurationList = FFC1863BD4026D2C17CBE82B /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
-				66FDD99AD85A288FB1A1AFB5 /* Sources */,
-				B2C8B15C3824AAFDA89FF712 /* Resources */,
+				B77F0AF073564580D75A2CF1 /* Sources */,
+				37BFF6A8CB5CC7FA21AD3FA3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9BC2E3FFFBD4B2A2F662D720 /* App */,
+				72A1F8D260D2B0F94CE920B5 /* App */,
 			);
 			name = App;
 			packageProductDependencies = (
 			);
 			productName = App;
-			productReference = 59FC45779041F758D77E4981 /* App.app */;
+			productReference = 49D88A349FD70A9153DD2C03 /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -88,13 +88,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EC9439B32188EF1B1E0F0334 /* App */,
+				93E9E330FC2CE7458D9C925F /* App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B2C8B15C3824AAFDA89FF712 /* Resources */ = {
+		37BFF6A8CB5CC7FA21AD3FA3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -104,7 +104,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		66FDD99AD85A288FB1A1AFB5 /* Sources */ = {
+		B77F0AF073564580D75A2CF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -114,6 +114,27 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		4A0C935808978B5A7673E412 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.name.App;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		5C9EF0E6AF4F9491454DE177 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -170,7 +191,7 @@
 			};
 			name = Release;
 		};
-		A7055E41C9F723940F0442C0 /* Release */ = {
+		EB1CC3A930E09FEBECF9195D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -184,33 +205,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.name.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.name.App;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
-		};
-		F517E2FFB75BB79E3552D741 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.name.app;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
 		};
 		F61063B78755D98B1B9C3697 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -278,20 +278,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1B3B335AD1DB963CE7FA322E /* Build configuration list for PBXNativeTarget "App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F517E2FFB75BB79E3552D741 /* Debug */,
-				A7055E41C9F723940F0442C0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		B3FD05C59F197F398A0B04AB /* Build configuration list for PBXProject "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F61063B78755D98B1B9C3697 /* Debug */,
 				5C9EF0E6AF4F9491454DE177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FFC1863BD4026D2C17CBE82B /* Build configuration list for PBXNativeTarget "App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A0C935808978B5A7673E412 /* Debug */,
+				EB1CC3A930E09FEBECF9195D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

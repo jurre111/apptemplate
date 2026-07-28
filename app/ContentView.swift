@@ -4,9 +4,9 @@ import MapKit
 struct ContentView: View {
     let fm = FileManager.default
     @Namespace private var pineMapScope
-    @AppStorage("showCompass") private var showCompass: Visibilty: .automatic
+    @AppStorage("showCompass") private var showCompass: Visibility: .automatic
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
-	@AppStorage("showScale") private var showScale: Visibilty: .automatic
+	@AppStorage("showScale") private var showScale: Visibility: .automatic
 	@AppStorage("showLocation") private var showLocation: Bool = false
 	@AppStorage("showZoomButtons") private var showZoomButtons: Bool = false
     @State private var showSheet: Bool = true

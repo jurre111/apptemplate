@@ -3,20 +3,32 @@ import MapKit
 
 struct ContentView: View {
     let fm = FileManager.default
+    @Namespace private var pineMapScope
     @AppStorage("alwaysShowCompass") private var alwaysShowCompass: Bool = false
     @AppStorage("alwaysShowPitchToggle") private var alwaysShowPitchToggle: Bool = false
     @State private var showSheet: Bool = true
     var body: some View {
-        Map()
+        Map(scope: pineMapScope)
+            .scope(pineMapScope)
+            .overlay(alignment: topTrailing) {
+                VStack {
+                    if alwaysShowCompass {
+                        MapCompass()
+                            .mapControlVisibility(.visible)
+                    }
+                    if alwaysShowPitchToggle {
+                        MapPitchToggle()
+                            .mapControlVisibility(.visible)
+                    }
+                    Button {
+                        // action
+                    } label: {
+                        Image(systemName: "star.fill")
+                    }
+                }
+            }
             .mapControls {
-                if alwaysShowCompass {
-                    MapCompass()
-                        .mapControlVisibility(.visible)
-                }
-                if alwaysShowPitchToggle {
-                    MapPitchToggle()
-                        .mapControlVisibility(.visible)
-                }
+                
             }
             .sheet(isPresented: $showSheet) {
                 SettingsView()

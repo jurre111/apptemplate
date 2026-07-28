@@ -13,9 +13,9 @@ struct SettingsView: View {
 						Section("Map UI") {
 							Toggle("Compass", isOn: $showCompass)
 							Picker("Scale", selection: $showScale) {
-								Text("On").tag(true)
-								Text("Off").tag(false)
+								Text("Always Shown").tag(true)
 								Text("Automatic").tag(nil as Bool?)
+								Text("Disabled").tag(false)
 							}
 							Toggle("Pitch Toggle", isOn: $showPitchToggle)
 							Toggle("Location Button", isOn: $showLocation)

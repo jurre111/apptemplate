@@ -27,16 +27,8 @@ struct ContentView: View {
         Map(scope: pineMapScope)
             .mapScope(pineMapScope)
             .overlay(alignment: .topTrailing) {
-                VStack {
-                    Button {
-                        // action
-                    } label: {
-                        Image(systemName: "star.fill")
-                    }
-                }
-            }
-            .mapControls {
-                MapCompass()
+                ControlGroup {
+                    MapCompass()
                     .mapControlVisibility(showCompass ? .automatic : .hidden)
                 MapPitchToggle()
                     .mapControlVisibility(getVisibility(showPitchToggle))
@@ -49,6 +41,9 @@ struct ContentView: View {
                             locManager.askPermission()
                         }
                     )
+                }
+                .controlGroupStyle(.compactMenu)
+                .padding()
             }
             .sheet(isPresented: $showSheet) {
                 SettingsView()

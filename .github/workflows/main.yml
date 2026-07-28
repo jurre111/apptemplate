@@ -12,7 +12,7 @@ jobs:
     name: Build IPA
     runs-on: macos-latest
     env:
-      scheme: Pine
+      scheme: App
     outputs:
       scheme: ${{ env.scheme }}
     steps:

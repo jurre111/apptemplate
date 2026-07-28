@@ -8,7 +8,6 @@ struct ContentView: View {
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
 	@AppStorage("showScale") private var showScale: Bool?
 	@AppStorage("showLocation") private var showLocation: Bool = false
-	@AppStorage("showZoomButtons") private var showZoomButtons: Bool = false
     @State private var showSheet: Bool = true
     var body: some View {
         Map(scope: pineMapScope)
@@ -31,8 +30,6 @@ struct ContentView: View {
                     .mapControlVisibility(getVisibility(showScale))
                 MapUserLocationButton()
                     .mapControlVisibility(getVisibility(showLocation))
-                MapZoomStepper()
-                    .mapControlVisibility(getVisibility(showZoomButtons))
             }
             .sheet(isPresented: $showSheet) {
                 SettingsView()

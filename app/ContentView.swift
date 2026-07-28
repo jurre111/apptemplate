@@ -27,23 +27,30 @@ struct ContentView: View {
         Map(scope: pineMapScope)
             .mapScope(pineMapScope)
             .overlay(alignment: .topTrailing) {
-                ControlGroup {
-                    MapCompass(scope: pineMapScope)
-                        .mapControlVisibility(showCompass ? .automatic : .hidden)
-                    MapPitchToggle(scope: pineMapScope)
-                        .mapControlVisibility(getVisibility(showPitchToggle))
-                    MapScaleView(scope: pineMapScope)
-                        .mapControlVisibility(getVisibility(showScale))
-                    MapUserLocationButton(scope: pineMapScope)
-                        .mapControlVisibility(getVisibility(showLocation))
-                        .simultaneousGesture(
-                            TapGesture().onEnded {
-                                locManager.askPermission()
-                            }
-                        )
+                VStack(spacing: 10) {
+                    ControlGroup {
+                        if showLocation {
+                            MapUserLocationButton(scope: pineMapScope)
+                                .simultaneousGesture(
+                                    TapGesture().onEnded {
+                                        locManager.askPermission()
+                                    }
+                                )
+                        }
+                    }
+                    .controlGroupStyle(.compactMenu)
+                    if showPitchToggle {
+                        MapPitchToggle(scope: pineMapScope)
+                    }
+                    if showCompass {
+                        MapCompass(scope: pineMapScope)
+                    }
                 }
-                .controlGroupStyle(.compactMenu)
                 .padding()
+            }
+            .mapControls {
+                MapScaleView(scope: pineMapScope)
+                    .mapControlVisibility(if let value = value { value ? .visible : .hidden}  else { .automatic })
             }
             .sheet(isPresented: $showSheet) {
                 SettingsView()

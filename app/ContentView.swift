@@ -4,9 +4,9 @@ import MapKit
 struct ContentView: View {
     let fm = FileManager.default
     @Namespace private var pineMapScope
-    @AppStorage("showCompass") private var showCompass: Visibility: .automatic
+    @AppStorage("showCompass") private var showCompass: Bool?
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
-	@AppStorage("showScale") private var showScale: Visibility: .automatic
+	@AppStorage("showScale") private var showScale: Bool?
 	@AppStorage("showLocation") private var showLocation: Bool = false
 	@AppStorage("showZoomButtons") private var showZoomButtons: Bool = false
     @State private var showSheet: Bool = true
@@ -24,15 +24,15 @@ struct ContentView: View {
             }
             .mapControls {
                 MapCompass()
-                    .mapControlVisibility(showCompass)
+                    .mapControlVisibility(getVisibility(showCompass))
                 MapPitchToggle()
-                    .mapControlVisibility(showPitchToggle ? .visible: .hidden)
+                    .mapControlVisibility(getVisibility(showPitchToggle))
                 MapScaleView()
-                    .mapControlVisibility(showScale)
+                    .mapControlVisibility(getVisibility(showScale))
                 MapUserLocationButton()
-                    .mapControlVisibility(showLocation ? .visible: .hidden)
+                    .mapControlVisibility(getVisibility(showLocation))
                 MapZoomStepper()
-                    .mapControlVisibility(showZoomButtons ? .visible: .hidden)
+                    .mapControlVisibility(getVisibility(showZoomButtons))
             }
             .sheet(isPresented: $showSheet) {
                 SettingsView()
@@ -41,6 +41,14 @@ struct ContentView: View {
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .interactiveDismissDisabled()
             }
+    }
+}
+
+func getVisibility(value: Bool?) -> Visibility {
+    if let bool = value {
+        return bool ? .visible : .hidden
+    } else {
+        return .automatic
     }
 }
 

@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct SettingsView: View {
-	@AppStorage("showCompass") private var showCompass: Visibility: .automatic
+	@AppStorage("showCompass") private var showCompass: Bool?
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
-	@AppStorage("showScale") private var showScale: Visibility: .automatic
+	@AppStorage("showScale") private var showScale: Bool?
 	@AppStorage("showLocation") private var showLocation: Bool = false
 	@AppStorage("showZoomButtons") private var showZoomButtons: Bool = false
 	var body: some View {

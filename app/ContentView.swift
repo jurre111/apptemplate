@@ -17,10 +17,10 @@ class LocManager: NSObject {
 struct ContentView: View {
     let fm = FileManager.default
     @Namespace private var pineMapScope
-    @AppStorage("showCompass") private var showCompass: Bool
+    @AppStorage("showCompass") private var showCompass: Bool = true
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
 	@AppStorage("showScale") private var showScale: Bool?
-	@AppStorage("showLocation") private var showLocation: Bool = false
+	@AppStorage("showLocation") private var showLocation: Bool = true
     @State private var locManager = LocManager()
     @State private var showSheet: Bool = true
     var body: some View {

@@ -1,28 +1,24 @@
 import SwiftUI
 
 struct SettingsView: View {
-	@AppStorage("showCompass") private var showCompass: Bool?
+	@AppStorage("showCompass") private var showCompass: Bool = true
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
 	@AppStorage("showScale") private var showScale: Bool?
-	@AppStorage("showLocation") private var showLocation: Bool = false
+	@AppStorage("showLocation") private var showLocation: Bool = true
 	var body: some View {
 		NavigationStack {
 			List {
 				NavigationLink("User Interface") {
 					List {
 						Section("Map UI") {
-							Picker("Compass", selection: $showCompass) {
-								Text("On").tag(true)
-								Text("Off").tag(false)
-								Text("Automatic").tag(nil as Bool?)
-							}
+							Toggle("Compass", isOn: $showCompass)
 							Picker("Scale", selection: $showScale) {
 								Text("On").tag(true)
 								Text("Off").tag(false)
 								Text("Automatic").tag(nil as Bool?)
 							}
-							Toggle("Show Pitch Toggle", isOn: $showPitchToggle)
-							Toggle("Show Location", isOn: $showLocation)
+							Toggle("Pitch Toggle", isOn: $showPitchToggle)
+							Toggle("Location Button", isOn: $showLocation)
 						}
 					}
 				}

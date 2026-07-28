@@ -50,7 +50,7 @@ struct ContentView: View {
             }
             .mapControls {
                 MapScaleView(scope: pineMapScope)
-                    .mapControlVisibility(if let value = value { value ? .visible : .hidden}  else { .automatic })
+                    .mapControlVisibility({if let value = showScale { value ? .visible : .hidden}  else { .automatic }}())
             }
             .sheet(isPresented: $showSheet) {
                 SettingsView()

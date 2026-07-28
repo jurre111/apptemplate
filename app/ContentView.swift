@@ -9,8 +9,8 @@ struct ContentView: View {
     @State private var showSheet: Bool = true
     var body: some View {
         Map(scope: pineMapScope)
-            .scope(pineMapScope)
-            .overlay(alignment: topTrailing) {
+            .mapScope(pineMapScope)
+            .overlay(alignment: .topTrailing) {
                 VStack {
                     if alwaysShowCompass {
                         MapCompass()

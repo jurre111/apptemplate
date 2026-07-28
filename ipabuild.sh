@@ -30,6 +30,8 @@ rm -rf "$PWD/Payload"
 mkdir -p "$PWD/Payload"
 cp -R "$APP_PATH" "$PWD/Payload/"
 
+plutil -insert NSLocationWhenInUseUsageDescription -string "This app needs your location to display your position on the map." "$PWD/Payload/$APP_NAME.app/Info.plist"
+
 if ! command -v ldid >/dev/null 2>&1; then
   echo "ERROR: ldid not installed. Install with: brew install ldid" >&2
   exit 1

@@ -34,7 +34,7 @@ if ! command -v ldid >/dev/null 2>&1; then
   echo "ERROR: ldid not installed. Install with: brew install ldid" >&2
   exit 1
 fi
-ldid -S "$PWD/build/Payload/$APP_NAME.app/$APP_NAME"
+ldid -S "$PWD/Payload/$APP_NAME.app/$APP_NAME"
 /usr/bin/zip -qry $APP_NAME.ipa Payload
 
 echo

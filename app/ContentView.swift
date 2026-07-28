@@ -44,7 +44,7 @@ struct ContentView: View {
     }
 }
 
-func getVisibility(value: Bool?) -> Visibility {
+func getVisibility(_ value: Bool?) -> Visibility {
     if let bool = value {
         return bool ? .visible : .hidden
     } else {

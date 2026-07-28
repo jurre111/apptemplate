@@ -1,4 +1,4 @@
-name: Nightly Build & Release
+name: Build & Release IPA
 
 on:
   push:
@@ -9,8 +9,12 @@ permissions:
 
 jobs:
   build:
+    name: Build IPA
     runs-on: macos-latest
-
+    env:
+      scheme: Pine
+    outputs:
+      scheme: ${{ env.scheme }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -30,7 +34,7 @@ jobs:
       - name: build app
         run: |
           chmod +x ipabuild.sh
-          ./ipabuild.sh
+          ./ipabuild.sh $scheme
 
       - name: upload artifact
         uses: actions/upload-artifact@v4
@@ -39,9 +43,11 @@ jobs:
           path: App.ipa
 
   release:
+    name: Release Nightly IPA 
     needs: build
     runs-on: ubuntu-latest
-
+    env:
+      scheme: ${{ needs.build.outputs.scheme }}
     steps:
       - name: checkout
         uses: actions/checkout@v4

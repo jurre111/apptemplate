@@ -12,14 +12,6 @@ struct ContentView: View {
             .mapScope(pineMapScope)
             .overlay(alignment: .topTrailing) {
                 VStack {
-                    if alwaysShowCompass {
-                        MapCompass()
-                            .mapControlVisibility(.visible)
-                    }
-                    if alwaysShowPitchToggle {
-                        MapPitchToggle()
-                            .mapControlVisibility(.visible)
-                    }
                     Button {
                         // action
                     } label: {
@@ -28,6 +20,14 @@ struct ContentView: View {
                 }
             }
             .mapControls {
+                if alwaysShowCompass {
+                    MapCompass()
+                        .mapControlVisibility(.visible)
+                }
+                if alwaysShowPitchToggle {
+                    MapPitchToggle()
+                        .mapControlVisibility(.visible)
+                }
                 
             }
             .sheet(isPresented: $showSheet) {

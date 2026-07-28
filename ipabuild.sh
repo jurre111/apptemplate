@@ -1,79 +1,43 @@
 #!/bin/bash
+set -euo pipefail
 
-set -e
+APP_NAME=$1
 
-cd "$(dirname "$0")"
+rm -rf build/
+mkdir -p build
 
-APPLICATION_NAME=App
+echo "Build Started!"
+echo
 
-echo "[*] $APPLICATION_NAME Build Script"
+xcodebuild \
+  -project $APP_NAME.xcodeproj \
+  -scheme $APP_NAME \
+  -configuration Debug \
+  -sdk iphoneos \
+  -arch arm64e \
+  CODE_SIGNING_ALLOWED=NO \
+  CODE_SIGNING_REQUIRED=NO \
+  CODE_SIGN_IDENTITY="" \
+  archive \
+  -archivePath "$PWD/build/$APP_NAME.xcarchive" 2>&1 | xcpretty
 
-rm -rf build
-
-if ls *.ipa 1> /dev/null 2>&1; then
-    rm -rf *.ipa
-fi
-
-WORKING_LOCATION="$(pwd)"
-
-if [ ! -d "build" ]; then
-    mkdir build
-fi
-
-cd build
-
-echo "[*] Building..."
-if [[ $* == *--debug* ]]; then
-xcodebuild -project "$WORKING_LOCATION/$APPLICATION_NAME.xcodeproj" \
-    -scheme "$APPLICATION_NAME" \
-    -configuration Debug \
-    -derivedDataPath "$WORKING_LOCATION/build/DerivedDataApp" \
-    -destination 'generic/platform=iOS' \
-    clean build \
-    CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
-
-DD_APP_PATH="$WORKING_LOCATION/build/DerivedDataApp/Build/Products/Debug-iphoneos/$APPLICATION_NAME.app"
-TARGET_APP="$WORKING_LOCATION/build/$APPLICATION_NAME.app"
-cp -r "$DD_APP_PATH" "$TARGET_APP"
-else
-xcodebuild -project "$WORKING_LOCATION/$APPLICATION_NAME.xcodeproj" \
-    -scheme "$APPLICATION_NAME" \
-    -configuration Release \
-    -derivedDataPath "$WORKING_LOCATION/build/DerivedDataApp" \
-    -destination 'generic/platform=iOS' \
-    clean build \
-    CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO" 2>&1 | xcpretty
-
-DD_APP_PATH="$WORKING_LOCATION/build/DerivedDataApp/Build/Products/Release-iphoneos/$APPLICATION_NAME.app"
-if [ ! -d "$DD_APP_PATH" ]; then
-  echo "Build failed!"
+APP_PATH="$PWD/build/$APP_NAME.xcarchive/Products/Applications/$APP_NAME.app"
+if [ ! -d "$APP_PATH" ]; then
+  echo "Build Failed!"
   exit 1
 fi
-TARGET_APP="$WORKING_LOCATION/build/$APPLICATION_NAME.app"
-cp -r "$DD_APP_PATH" "$TARGET_APP"
-fi
+rm -rf "$PWD/Payload"
+mkdir -p "$PWD/Payload"
+cp -R "$APP_PATH" "$PWD/Payload/"
 
-echo "[*] Stripping signature..."
-codesign --remove "$TARGET_APP"
-if [ -e "$TARGET_APP/_CodeSignature" ]; then
-    rm -rf "$TARGET_APP/_CodeSignature"
+if ! command -v ldid >/dev/null 2>&1; then
+  echo "ERROR: ldid not installed. Install with: brew install ldid" >&2
+  exit 1
 fi
-if [ -e "$TARGET_APP/embedded.mobileprovision" ]; then
-    rm -rf "$TARGET_APP/embedded.mobileprovision"
-fi
+ldid -S "$PWD/build/Payload/$APP_NAME.app/$APP_NAME"
+/usr/bin/zip -qry $APP_NAME.ipa Payload
 
-echo "[*] Packaging..."
-mkdir Payload
-cp -r $APPLICATION_NAME.app Payload/$APPLICATION_NAME.app
-zip -vr $APPLICATION_NAME.ipa Payload
-
-echo "[*] All done, cleaning up..."
-rm -rf Payload
-
-cd ..
-if [[ $* == *--debug* ]]; then
-mv "$WORKING_LOCATION/build/$APPLICATION_NAME.ipa" ./$APPLICATION_NAME.debug.ipa
-else
-mv "$WORKING_LOCATION/build/$APPLICATION_NAME.ipa" .
-fi
-rm -rf "$WORKING_LOCATION/build/"
+echo
+echo "build successful!"
+echo "ipa at: $APP_NAME.ipa"
+exit 0

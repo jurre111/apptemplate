@@ -14,12 +14,12 @@ struct SettingsView: View {
 							Picker("Compass", selection: $showCompass) {
 								Text("On").tag(true)
 								Text("Off").tag(false)
-								Text("Automatic").tag(nil)
+								Text("Automatic").tag(nil as Bool?)
 							}
 							Picker("Scale", selection: $showScale) {
 								Text("On").tag(true)
 								Text("Off").tag(false)
-								Text("Automatic").tag(nil)
+								Text("Automatic").tag(nil as Bool?)
 							}
 							Toggle("Show Pitch Toggle", isOn: $showPitchToggle)
 							Toggle("Show Location", isOn: $showLocation)

@@ -28,19 +28,19 @@ struct ContentView: View {
             .mapScope(pineMapScope)
             .overlay(alignment: .topTrailing) {
                 ControlGroup {
-                    MapCompass()
-                    .mapControlVisibility(showCompass ? .automatic : .hidden)
-                MapPitchToggle()
-                    .mapControlVisibility(getVisibility(showPitchToggle))
-                MapScaleView()
-                    .mapControlVisibility(getVisibility(showScale))
-                MapUserLocationButton()
-                    .mapControlVisibility(getVisibility(showLocation))
-                    .simultaneousGesture(
-                        TapGesture().onEnded {
-                            locManager.askPermission()
-                        }
-                    )
+                    MapCompass(scope: pineMapScope)
+                        .mapControlVisibility(showCompass ? .automatic : .hidden)
+                    MapPitchToggle(scope: pineMapScope)
+                        .mapControlVisibility(getVisibility(showPitchToggle))
+                    MapScaleView(scope: pineMapScope)
+                        .mapControlVisibility(getVisibility(showScale))
+                    MapUserLocationButton(scope: pineMapScope)
+                        .mapControlVisibility(getVisibility(showLocation))
+                        .simultaneousGesture(
+                            TapGesture().onEnded {
+                                locManager.askPermission()
+                            }
+                        )
                 }
                 .controlGroupStyle(.compactMenu)
                 .padding()

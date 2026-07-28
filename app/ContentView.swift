@@ -26,7 +26,6 @@ struct ContentView: View {
                 }
                 if alwaysShowPitchToggle {
                     MapPitchToggle()
-                        .mapControlVisibility(.visible)
                 }
                 
             }

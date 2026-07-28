@@ -4,9 +4,9 @@ import MapKit
 struct ContentView: View {
     let fm = FileManager.default
     @Namespace private var pineMapScope
-    @AppStorage("showCompass") private var showCompass: Bool?
+    @AppStorage("showCompass") private var showCompass: Visibilty: .automatic
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
-	@AppStorage("showScale") private var showScale: Bool?
+	@AppStorage("showScale") private var showScale: Visibilty: .automatic
 	@AppStorage("showLocation") private var showLocation: Bool = false
 	@AppStorage("showZoomButtons") private var showZoomButtons: Bool = false
     @State private var showSheet: Bool = true
@@ -24,11 +24,11 @@ struct ContentView: View {
             }
             .mapControls {
                 MapCompass()
-                    .mapControlVisibility(showCompass == nil ? .automatic : (showCompass ? .visible : .hidden))
+                    .mapControlVisibility(showCompass)
                 MapPitchToggle()
                     .mapControlVisibility(showPitchToggle ? .visible: .hidden)
                 MapScaleView()
-                    .mapControlVisibility(showScale == nil ? .automatic : (showScale ? .visible: .hidden))
+                    .mapControlVisibility(showScale)
                 MapUserLocationButton()
                     .mapControlVisibility(showLocation ? .visible: .hidden)
                 MapZoomStepper()

@@ -54,13 +54,14 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showSheet) {
                 SettingsView()
-                .presentationBackground {
-                    ZStack {
-                        Rectangle().fill(.regularMaterial)
-                        Color(.systemBackground).opacity(0.4)
-                    }
-                }
-                .presentationDetents([.height(70), .medium, .large])
+                .presentationBackground(.thickMaterial)
+                // .presentationBackground {
+                //     ZStack {
+                //         Rectangle().fill(.regularMaterial)
+                //         Color(.systemBackground).opacity(0.4)
+                //     }
+                // }
+                .presentationDetents([.height(70), .height(200), .large])
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .interactiveDismissDisabled()
             }

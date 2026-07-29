@@ -56,9 +56,8 @@ struct ContentView: View {
                 SettingsView()
                 .presentationBackground {
                     ZStack {
-                        Material.regular
-                        Color(.systemBackground)
-                            .opacity(0.6)
+                        Rectangle().fill(.regularMaterial)
+                        Color(.systemBackground).opacity(0.6)
                     }
                 }
                 .presentationDetents([.height(70), .medium, .large])

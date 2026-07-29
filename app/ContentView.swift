@@ -54,7 +54,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showSheet) {
                 SettingsView()
-                .presentationBackground(.thinMaterial)
+                .presentationBackground(.thickMaterial)
                 .presentationDetents([.height(70), .medium, .large])
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .interactiveDismissDisabled()

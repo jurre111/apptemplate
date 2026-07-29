@@ -8,7 +8,7 @@ struct SettingsView: View {
 	var body: some View {
 		NavigationStack {
 			List {
-				NavigationLink("User Interface") {
+				NavigationLink("UI Customization") {
 					List {
 						Section("Map UI") {
 							Toggle("Compass", isOn: $showCompass)

@@ -24,47 +24,38 @@ struct ContentView: View {
     @State private var locManager = LocManager()
     @State private var showSheet: Bool = true
     var body: some View {
-        Map(scope: pineMapScope)
-            .mapScope(pineMapScope)
-            .overlay(alignment: .topTrailing) {
-                VStack(spacing: 10) {
-                    ControlGroup {
-                        if showLocation {
-                            MapUserLocationButton(scope: pineMapScope)
-                                .simultaneousGesture(
-                                    TapGesture().onEnded {
-                                        locManager.askPermission()
-                                    }
-                                )
-                        }
-                    }
-                    .controlGroupStyle(.compactMenu)
-                    if showPitchToggle {
-                        MapPitchToggle(scope: pineMapScope)
-                    }
-                    if showCompass {
-                        MapCompass(scope: pineMapScope)
-                    }
+        ZStack {
+            Map(scope: pineMapScope)
+                .mapControls {
+                    MapScaleView(scope: pineMapScope)
+                        .mapControlVisibility({if let value = showScale { value ? .visible : .hidden}  else { .automatic }}())
                 }
-                .padding()
+            VStack(spacing: 10) {
+                if showLocation {
+                    MapUserLocationButton(scope: pineMapScope)
+                        .simultaneousGesture(
+                            TapGesture().onEnded {
+                                locManager.askPermission()
+                            }
+                        )
+                }
+                if showPitchToggle {
+                    MapPitchToggle(scope: pineMapScope)
+                }
+                if showCompass {
+                    MapCompass(scope: pineMapScope)
+                }
             }
-            .mapControls {
-                MapScaleView(scope: pineMapScope)
-                    .mapControlVisibility({if let value = showScale { value ? .visible : .hidden}  else { .automatic }}())
-            }
-            .sheet(isPresented: $showSheet) {
-                SettingsView()
-                .presentationBackground(.thickMaterial)
-                // .presentationBackground {
-                //     ZStack {
-                //         Rectangle().fill(.regularMaterial)
-                //         Color(.systemBackground).opacity(0.4)
-                //     }
-                // }
-                .presentationDetents([.height(70), .medium, .large])
-                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
-                .interactiveDismissDisabled()
-            }
+            .padding()
+        }
+        .mapScope(pineMapScope)
+        .sheet(isPresented: $showSheet) {
+            SettingsView()
+            .presentationBackground(.thickMaterial)
+            .presentationDetents([.height(70), .medium, .large])
+            .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+            .interactiveDismissDisabled()
+        }
     }
 }
 

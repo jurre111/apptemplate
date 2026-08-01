@@ -5,6 +5,7 @@ struct SettingsView: View {
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
 	@AppStorage("showScale") private var showScale: Bool?
 	@AppStorage("showLocation") private var showLocation: Bool = true
+	@State private var searchText: String = ""
 	var body: some View {
 		NavigationStack {
 			List {
@@ -19,12 +20,14 @@ struct SettingsView: View {
 							}
 							Toggle("Pitch Toggle", isOn: $showPitchToggle)
 							Toggle("Location Button", isOn: $showLocation)
+
 						}
 					}
+					.scrollContentBackground(.hidden)
 				}
-				.navigationTitle("Settings")
 			}
 			.scrollContentBackground(.hidden)
+			.searchable(text: $searchText)
 		}
 	}
 }

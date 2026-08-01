@@ -24,7 +24,7 @@ struct ContentView: View {
     @State private var locManager = LocManager()
     @State private var showSheet: Bool = true
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topTrailing) {
             Map(scope: pineMapScope)
                 .mapControls {
                     MapScaleView(scope: pineMapScope)
@@ -32,15 +32,20 @@ struct ContentView: View {
                 }
             VStack(spacing: 10) {
                 if showLocation {
-                    MapUserLocationButton(scope: pineMapScope)
-                        .simultaneousGesture(
-                            TapGesture().onEnded {
-                                locManager.askPermission()
-                            }
-                        )
+                    ZStack(alignment: .center) {
+                        CardView()
+                        MapUserLocationButton(scope: pineMapScope)
+                            .simultaneousGesture(
+                                TapGesture().onEnded {
+                                    locManager.askPermission()
+                                }
+                            )
+                    }
                 }
                 if showPitchToggle {
-                    MapPitchToggle(scope: pineMapScope)
+                    ZStack(alignment: .center) {
+                        MapPitchToggle(scope: pineMapScope)
+                    }
                 }
                 if showCompass {
                     MapCompass(scope: pineMapScope)
@@ -64,6 +69,14 @@ func getVisibility(_ value: Bool?) -> Visibility {
         return bool ? .visible : .hidden
     } else {
         return .automatic
+    }
+}
+
+struct CardView: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 10, style: .continuous)
+            .fill(.thickMaterial)
+            .frame(width: 44, height: 44)
     }
 }
 

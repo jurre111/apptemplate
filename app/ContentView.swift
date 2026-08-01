@@ -44,6 +44,7 @@ struct ContentView: View {
                 }
                 if showPitchToggle {
                     ZStack(alignment: .center) {
+                        CardView()
                         MapPitchToggle(scope: pineMapScope)
                     }
                 }
@@ -55,7 +56,9 @@ struct ContentView: View {
         }
         .mapScope(pineMapScope)
         .sheet(isPresented: $showSheet) {
-            SettingsView()
+            Button("Location") {
+                locManager.askPermission()
+            } // SettingsView()
             .presentationBackground(.thickMaterial)
             .presentationDetents([.height(70), .medium, .large])
             .presentationBackgroundInteraction(.enabled(upThrough: .medium))

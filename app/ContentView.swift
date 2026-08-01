@@ -61,8 +61,8 @@ struct ContentView: View {
                 //         Color(.systemBackground).opacity(0.4)
                 //     }
                 // }
-                .presentationDetents([.height(70), PresentationDetent.fraction(0.5), .large])
-                .presentationBackgroundInteraction(.enabled(upThrough: PresentationDetent.fraction(0.5)))
+                .presentationDetents([.height(70), .medium, .large])
+                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .interactiveDismissDisabled()
             }
     }

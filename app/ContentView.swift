@@ -62,7 +62,7 @@ struct ContentView: View {
                 //     }
                 // }
                 .presentationDetents([.height(70), .height(262), .large])
-                .presentationBackgroundInteraction(.enabled(upThrough: .height(200)))
+                .presentationBackgroundInteraction(.enabled(upThrough: .height(262)))
                 .interactiveDismissDisabled()
             }
     }

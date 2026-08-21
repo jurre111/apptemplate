@@ -56,9 +56,16 @@ struct ContentView: View {
                 )
                 
                 if showPitchToggle {
-                    ZStack(alignment: .center) {
-                        CardView()
-                        MapPitchToggle(scope: pineMapScope)
+                    Button {
+                        // pitch
+                    } label: {
+                        Image(systemName: "view.2d")
+                            .foregroundColor(.secondary)
+                            .frame(width: 44, height: 44, alignment: .center)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .fill(.thickMaterial)
+                            )
                     }
                 }
                 if showCompass {

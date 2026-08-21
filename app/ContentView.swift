@@ -31,7 +31,7 @@ struct ContentView: View {
                         .mapControlVisibility({if let value = showScale { value ? .visible : .hidden}  else { .automatic }}())
                 }
             VStack(spacing: 10) {
-                VStack {
+                VStack(spacing: 0) {
                     Button {
                         // ?
                     } label: {
@@ -41,10 +41,11 @@ struct ContentView: View {
                     }
                     if showLocation {
                         Divider()
+                            .frame(width: 44)
                         Button {
                             locManager.askPermission()
                         } label: {
-                            Image(systemName: "location")
+                            Image(systemName: "location"), alignment: .center)
                                 .foregroundColor(.secondary)
                                 .frame(width: 44, height: 44, alignment: .center)
                         }

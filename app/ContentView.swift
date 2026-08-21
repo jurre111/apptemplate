@@ -45,7 +45,7 @@ struct ContentView: View {
                         Button {
                             locManager.askPermission()
                         } label: {
-                            Image(systemName: "location"), alignment: .center)
+                            Image(systemName: "location")
                                 .foregroundColor(.secondary)
                                 .frame(width: 44, height: 44, alignment: .center)
                         }

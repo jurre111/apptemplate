@@ -73,6 +73,7 @@ struct ContentView: View {
                     MapCompass(scope: pineMapScope)
                 }
             }
+            .padding(10)
         }
         .mapScope(pineMapScope)
         .sheet(isPresented: $showSheet) {

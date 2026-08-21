@@ -31,17 +31,30 @@ struct ContentView: View {
                         .mapControlVisibility({if let value = showScale { value ? .visible : .hidden}  else { .automatic }}())
                 }
             VStack(spacing: 10) {
-                if showLocation {
-                    ZStack(alignment: .center) {
-                        CardView()
-                        MapUserLocationButton(scope: pineMapScope)
-                            .simultaneousGesture(
-                                TapGesture().onEnded {
-                                    locManager.askPermission()
-                                }
-                            )
+                VStack {
+                    Button {
+                        // ?
+                    } label: {
+                        Image(systemName: "map")
+                            .foregroundColor(.secondary)
+                            .frame(width: 44, height: 44, alignment: .center)
+                    }
+                    if showLocation {
+                        Divider()
+                        Button {
+                            locManager.askPermission()
+                        } label: {
+                            Image(systemName: "location")
+                                .foregroundColor(.secondary)
+                                .frame(width: 44, height: 44, alignment: .center)
+                        }
                     }
                 }
+                .background(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(.thickMaterial)
+                )
+                
                 if showPitchToggle {
                     ZStack(alignment: .center) {
                         CardView()
@@ -52,7 +65,6 @@ struct ContentView: View {
                     MapCompass(scope: pineMapScope)
                 }
             }
-            .padding()
         }
         .mapScope(pineMapScope)
         .sheet(isPresented: $showSheet) {
@@ -72,14 +84,6 @@ func getVisibility(_ value: Bool?) -> Visibility {
         return bool ? .visible : .hidden
     } else {
         return .automatic
-    }
-}
-
-struct CardView: View {
-    var body: some View {
-        RoundedRectangle(cornerRadius: 10, style: .continuous)
-            .fill(.thickMaterial)
-            .frame(width: 44, height: 44)
     }
 }
 

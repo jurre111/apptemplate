@@ -35,13 +35,13 @@ struct ContentView: View {
                     Button {
                         // ?
                     } label: {
-                        Image(systemName: "map")
+                        Image(systemName: "map.fill")
                             .foregroundColor(.secondary)
                             .frame(width: 44, height: 44, alignment: .center)
                     }
                     if showLocation {
                         Divider()
-                            .frame(width: 44)
+                            .frame(width: 44, height: 1.5)
                         Button {
                             locManager.askPermission()
                         } label: {

@@ -27,7 +27,7 @@ struct MapThemeSettingsView: View {
                     // }
                 }
             }
-            RoundedRectangle()
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .frame(maxWidth: .infinity, maxHeight: 100)
                 .fill(.ultraThickMaterial)
         }

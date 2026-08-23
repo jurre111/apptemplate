@@ -21,8 +21,10 @@ struct ContentView: View {
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
 	@AppStorage("showScale") private var showScale: Bool?
 	@AppStorage("showLocation") private var showLocation: Bool = true
+    @AppStorage("mapTheme") private var mapTheme: Bool = true
     @State private var locManager = LocManager()
     @State private var showSheet: Bool = true
+    @State private var showMapThemeSheet: Bool = false
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Map(scope: pineMapScope)
@@ -33,7 +35,7 @@ struct ContentView: View {
             VStack(spacing: 10) {
                 VStack(spacing: 0) {
                     Button {
-                        // ?
+                        showMapThemeSheet = true
                     } label: {
                         Image(systemName: "map.fill")
                             .foregroundColor(.secondary)
@@ -77,13 +79,17 @@ struct ContentView: View {
         }
         .mapScope(pineMapScope)
         .sheet(isPresented: $showSheet) {
-            Button("Location") {
-                locManager.askPermission()
-            } // SettingsView()
+            SettingsView()
             .presentationBackground(.thickMaterial)
             .presentationDetents([.height(70), .medium, .large])
             .presentationBackgroundInteraction(.enabled(upThrough: .medium))
             .interactiveDismissDisabled()
+        }
+        .sheet(isPresented: $showMapThemeSheet) {
+            MapThemeSettingsView()
+            .presentationBackground(.thickMaterial)
+            .presentationDetents([.height(375)])
+
         }
     }
 }

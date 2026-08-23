@@ -41,6 +41,12 @@ struct ContentView: View {
                             .foregroundColor(.secondary)
                             .frame(width: 44, height: 44, alignment: .center)
                     }
+                    .sheet(isPresented: $showMapThemeSheet) {
+                        MapThemeSettingsView()
+                        .presentationBackground(.thickMaterial)
+                        .presentationDetents([.height(375)])
+
+                    }
                     if showLocation {
                         Divider()
                             .frame(width: 44, height: 1.5)
@@ -84,12 +90,6 @@ struct ContentView: View {
             .presentationDetents([.height(70), .medium, .large])
             .presentationBackgroundInteraction(.enabled(upThrough: .medium))
             .interactiveDismissDisabled()
-        }
-        .sheet(isPresented: $showMapThemeSheet) {
-            MapThemeSettingsView()
-            .presentationBackground(.thickMaterial)
-            .presentationDetents([.height(375)])
-
         }
     }
 }

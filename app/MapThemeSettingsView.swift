@@ -7,7 +7,7 @@ struct MapThemeSettingsView: View {
         VStack {
             HStack {
                 Text("Choose Map")
-                    .font(.largeTitle)
+                    .font(.headline)
                     .fontWeight(.bold)
                 Spacer()
                 Button {
@@ -27,13 +27,10 @@ struct MapThemeSettingsView: View {
                     // }
                 }
             }
-            List{
-                Section {
-                    Text("test")
-                    Text("test")
-                    Text("test")
-                }
-            }
+            RoundedRectangle()
+                .frame(maxWidth: .infinity, maxHeight: 100)
+                .fill(.ultraThickMaterial)
         }
+        .padding()
     }
 }

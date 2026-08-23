@@ -15,7 +15,7 @@ struct MapThemeSettingsView: View {
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .frame(width: 30, height: 30)
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.secondary)
                         .symbolRenderingMode(.hierarchical)
                     // ZStack(alignment: .center) {
                     //     Circle()

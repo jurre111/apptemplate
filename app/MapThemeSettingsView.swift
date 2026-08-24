@@ -28,8 +28,8 @@ struct MapThemeSettingsView: View {
                 }
             }
             RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .frame(maxWidth: .infinity, maxHeight: 100)
                 .fill(.ultraThickMaterial)
+                .frame(maxWidth: .infinity, maxHeight: 100)
         }
         .padding()
     }

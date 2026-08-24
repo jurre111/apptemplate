@@ -7,7 +7,7 @@ struct MapThemeSettingsView: View {
         VStack {
             HStack {
                 Text("Choose Map")
-                    .font(system(size: 22))
+                    .font(.system(size: 22))
                     .fontWeight(.semibold)
                 Spacer()
                 Button {

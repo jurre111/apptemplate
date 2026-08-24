@@ -21,7 +21,7 @@ struct ContentView: View {
     @AppStorage("showPitchToggle") private var showPitchToggle: Bool = false
 	@AppStorage("showScale") private var showScale: Bool?
 	@AppStorage("showLocation") private var showLocation: Bool = true
-    @AppStorage("mapTheme") private var mapTheme: Bool = true
+    @AppStorage("mapTheme") private var mapTheme: Int = 0
     @State private var locManager = LocManager()
     @State private var showSheet: Bool = true
     @State private var showMapThemeSheet: Bool = false
